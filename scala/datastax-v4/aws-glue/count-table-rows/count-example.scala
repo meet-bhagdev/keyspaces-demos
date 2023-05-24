@@ -25,9 +25,9 @@ object GlueApp {
 
   def main(sysArgs: Array[String]) {
 
-    val args = GlueArgParser.getResolvedOptions(sysArgs, Seq("JOB_NAME", "KEYSPACE_NAME", "TABLE_NAME", "DRIVER_CONF").toArray)
+    val args = GlueArgParser.getResolvedOptions(sysArgs, Seq("test", "replicator", "keyspace", "cassandra-application.conf").toArray)
 
-    val driverConfFileName = args("DRIVER_CONF")
+    val driverConfFileName = "cassandra-application.conf"
 
     val conf = new SparkConf()
         .setAll(
@@ -53,7 +53,7 @@ object GlueApp {
     
     import sparkSession.implicits._
     
-    Job.init(args("JOB_NAME"), glueContext, args.asJava)
+    Job.init(args("test"), glueContext, args.asJava)
     
     val logger = new GlueLogger
     
@@ -76,8 +76,8 @@ object GlueApp {
     }
     
     //count rows
-    val tableName = args("TABLE_NAME")
-    val keyspaceName = args("KEYSPACE_NAME")
+    val tableName = args("keyvalue")
+    val keyspaceName = args("replicator")
 
     val tableDf = sparkSession.read
       .format("org.apache.spark.sql.cassandra")
