@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-sigv4-example",
+  "version": "1.0.2",
+  "description": "A sigv4 authentication plugin for open-source Datastax NodeJS Driver for Apache Cassandra",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha retry/unit/*.test.js --recursive --timeout 6000 --exit"
+  },
+  "keywords": [
+    "cassandra",
+    "cql",
+    "sigv4",
+    "connection",
+    "driver",
+    "aws"
+  ],
+  "author": "",
+  "license": "MIT-0",
+  "dependencies": {
+    "aws-sigv4-auth-cassandra-plugin": "^1.0.3",
+    "cassandra-driver": "^4.6.3",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "dotenv": "^10.0.0",
+    "fs": "0.0.1-security"
+  }
+}
